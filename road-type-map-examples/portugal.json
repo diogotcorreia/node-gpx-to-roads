@@ -1,0 +1,10 @@
+{
+  "Rua": "street",
+  "Largo": "street",
+  "Alameda": "street",
+  "Estrada": "street",
+  "Praceta": "street",
+  "Ribeira": "street",
+  "Avenida": "avenue",
+  "Autoestrada": "highway"
+}

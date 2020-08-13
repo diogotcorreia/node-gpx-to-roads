@@ -1,0 +1,27 @@
+{
+  "name": "gpx-to-roads",
+  "description": "Get statistics per road type on a GPX file",
+  "version": "1.0.0",
+  "author": {
+    "name": "Diogo Correia",
+    "email": "me@diogotc.com",
+    "url": "https://diogotc.com"
+  },
+  "bin": "./src/index.js",
+  "license": "MIT",
+  "keywords": [
+    "gpx",
+    "statistics",
+    "cli",
+    "openstreetmap"
+  ],
+  "repository": {
+    "url": "https://github.com/diogotcorreia/node-gpx-to-roads"
+  },
+  "dependencies": {
+    "arg": "^4.1.3",
+    "fit-file-parser": "^1.8.1",
+    "gpx-for-runners": "^1.0.6",
+    "osmtogeojson": "^3.0.0-beta.4"
+  }
+}
