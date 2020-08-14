@@ -5,6 +5,10 @@
   "Estrada": "street",
   "Praceta": "street",
   "Ribeira": "street",
+  "Praça": "street",
   "Avenida": "avenue",
+  "EN ": "national",
+  "Circular Regional": "trunk",
+  "A ": "highway",
   "Autoestrada": "highway"
 }

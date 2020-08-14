@@ -77,10 +77,28 @@ const sanitizeMapData = (input) => {
       (feature) =>
         feature.id.startsWith("way/") &&
         feature.geometry.type === "LineString" &&
-        feature.properties.name
+        feature.properties.highway &&
+        [
+          "motorway",
+          "trunk",
+          "primary",
+          "secondary",
+          "tertiary",
+          "unclassified",
+          "residential",
+          "motorway_link",
+          "trunk_link",
+          "primary_link",
+          "secondary_link",
+          "tertiary_link",
+          "living_street",
+          "service",
+          "road",
+        ].indexOf(feature.properties.highway) !== -1 &&
+        (feature.properties.name || feature.properties.ref)
     )
     .map((feature) => ({
-      name: feature.properties.name,
+      name: feature.properties.name || feature.properties.ref,
       coordinates: feature.geometry.coordinates,
     }));
 };
