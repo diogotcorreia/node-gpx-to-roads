@@ -98,7 +98,9 @@ const sanitizeMapData = (input) => {
         (feature.properties.name || feature.properties.ref)
     )
     .map((feature) => ({
-      name: feature.properties.name || feature.properties.ref,
+      name: [feature.properties.ref, feature.properties.name]
+        .filter((v) => !!v)
+        .join(" - "),
       coordinates: feature.geometry.coordinates,
     }));
 };
