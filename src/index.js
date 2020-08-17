@@ -101,6 +101,7 @@ const sanitizeMapData = (input) => {
       name: [feature.properties.ref, feature.properties.name]
         .filter((v) => !!v)
         .join(" - "),
+      type: feature.properties.highway,
       coordinates: feature.geometry.coordinates,
     }));
 };
@@ -137,6 +138,7 @@ const getClosestRoad = (point, map) => {
             arr[i + 1]
               ? {
                   name: v.name,
+                  type: v.type,
                   coord,
                   d: distToSegment(coord, arr[i + 1], point),
                 }
@@ -148,15 +150,16 @@ const getClosestRoad = (point, map) => {
     )
     .sort((a, b) => a.d - b.d);
   //console.log(distanceToRoad);
-  return distanceToRoad[0].name;
+  return distanceToRoad[0];
 };
 
-const getRoadType = (name, roadMap) => {
-  const type = Object.entries(roadMap).find(([k]) => name.includes(k));
-  return type ? type[1] : name;
+const getRoadType = (road, roadMap) => {
+  if (roadMap === null) return road.type;
+  const type = Object.entries(roadMap).find(([k]) => road.name.includes(k));
+  return type ? type[1] : road.name;
 };
 
-const analyzeRoute = async (gpxInput, mapInput, { roadMap = {} }) => {
+const analyzeRoute = async (gpxInput, mapInput, { roadMap = null }) => {
   const map = sanitizeMapData(
     typeof mapInput === "object" ? mapInput : JSON.parse(mapInput)
   );
