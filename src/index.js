@@ -94,13 +94,13 @@ const sanitizeMapData = (input) => {
           "living_street",
           "service",
           "road",
-        ].indexOf(feature.properties.highway) !== -1 &&
-        (feature.properties.name || feature.properties.ref)
+        ].indexOf(feature.properties.highway) !== -1
     )
     .map((feature) => ({
-      name: [feature.properties.ref, feature.properties.name]
-        .filter((v) => !!v)
-        .join(" - "),
+      name:
+        [feature.properties.ref, feature.properties.name]
+          .filter((v) => !!v)
+          .join(" - ") || "Unknown road",
       type: feature.properties.highway,
       coordinates: feature.geometry.coordinates,
     }));
