@@ -1,5 +1,7 @@
 # GPX to Roads
 
+[![npm](https://img.shields.io/npm/v/gpx-to-roads)](https://www.npmjs.com/package/gpx-to-roads)
+
 Get time and distance spent on each road from a .gpx file. Written in NodeJS.
 
 ## How to use
